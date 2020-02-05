@@ -654,7 +654,7 @@ def main():
     CACHE.cache_dump()
 
     if DEFAULTS['test'] == True:
-        okgreen("Succes", "HTML file building without error")
+        okgreen("Success", "HTML file building without error")
 
 if __name__ == '__main__':
     main()
