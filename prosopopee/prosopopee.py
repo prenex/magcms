@@ -427,7 +427,11 @@ def process_directory(gallery_name, settings, parent_templates, parent_gallery_p
                     process_directory(subgallery.name, settings, subgallery_templates, gallery_path)
                 )
 
-            build_index(settings, sub_page_galleries_cover, subgallery_templates, gallery_path, sub_index=True, gallery_settings=gallery_settings)
+            # Changed for (subgal_section)
+            #build_index(settings, sub_page_galleries_cover, subgallery_templates, gallery_path, sub_index=True, gallery_settings=gallery_settings)
+            build_gallery(settings, gallery_settings, gallery_path, parent_templates, galleries_cover=sub_page_galleries_cover);
+
+            # This is needed for rss xml generation
             gallery_cover['sub_gallery'] = sub_page_galleries_cover
 
     return gallery_cover
@@ -464,9 +468,16 @@ def create_cover(gallery_name, gallery_settings, gallery_path):
     return gallery_cover
 
 
-def build_gallery(settings, gallery_settings, gallery_path, template):
+def build_gallery(settings, gallery_settings, gallery_path, template, galleries_cover={}, sub_index=False):
     gallery_index_template = template.get_template("gallery-index.html")
     page_template = template.get_template("page.html")
+
+    # Added because of: (subgal_section)
+    reverse = gallery_settings.get('reverse', settings["settings"].get('reverse', False))
+    if reverse:
+        galleries_cover = sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"])
+    else:
+        galleries_cover = reversed(sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"]))
 
     # this should probably be a factory
     Image.base_dir = Path(".").joinpath(gallery_path)
@@ -487,6 +498,8 @@ def build_gallery(settings, gallery_settings, gallery_path, template):
     html = template_to_render.render(
         settings=settings,
         gallery=gallery_settings,
+        galleries=galleries_cover, # (subgal_section)
+        sub_index=sub_index, # TODO: (subgal_section)
         Image=Image,
         Video=Video,
         Audio=Audio,
@@ -580,6 +593,9 @@ def build_index(settings, galleries_cover, templates, gallery_path='', sub_index
 def main():
     arguments = docopt(__doc__, version='0.8.1')
     settings = get_settings()
+    # In order to let the front page render as a gallery itself, we needed "gallery_settings", which will be 
+    # the same YAML file as the settings yaml file for the first page! (subgal_section)
+    gallery_settings = settings #yaml.safe_load(open(Path(".").joinpath(gallery_path, "settings.yaml").abspath(), "r"))
 
     front_page_galleries_cover = []
 
@@ -650,7 +666,10 @@ def main():
 
         open(Path("build").joinpath("feed.xml"), "wb").write(xml)
 
-    build_index(settings, front_page_galleries_cover, templates)
+    # Changes for: (subgal_section)
+    #build_index(settings, front_page_galleries_cover, templates)
+    gallery_path='' # TODO: Is this sure? This is the main page now, I guess this value here for now!
+    build_gallery(settings, gallery_settings, gallery_path, templates, galleries_cover=front_page_galleries_cover)
     CACHE.cache_dump()
 
     if DEFAULTS['test'] == True:
