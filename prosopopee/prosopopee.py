@@ -428,8 +428,12 @@ def process_directory(gallery_name, settings, parent_templates, parent_gallery_p
                 )
 
             # Changed for (subgal_section)
-            #build_index(settings, sub_page_galleries_cover, subgallery_templates, gallery_path, sub_index=True, gallery_settings=gallery_settings)
-            build_gallery(settings, gallery_settings, gallery_path, parent_templates, galleries_cover=sub_page_galleries_cover);
+            if not gallery_settings.get("sections"):
+                # Simple old way of creating separate "index pages" for subgalleries (for compatibility)
+                build_index(settings, sub_page_galleries_cover, subgallery_templates, gallery_path, sub_index=True, gallery_settings=gallery_settings)
+            else:
+                # Galeries now can have both sections and subgalleries. The subgalleries show up in the "subgal" type section!
+                build_gallery(settings, gallery_settings, gallery_path, parent_templates, galleries_cover=sub_page_galleries_cover);
 
             # This is needed for rss xml generation
             gallery_cover['sub_gallery'] = sub_page_galleries_cover
@@ -468,16 +472,17 @@ def create_cover(gallery_name, gallery_settings, gallery_path):
     return gallery_cover
 
 
-def build_gallery(settings, gallery_settings, gallery_path, template, galleries_cover={}, sub_index=False):
+def build_gallery(settings, gallery_settings, gallery_path, template, galleries_cover=False, sub_index=False):
     gallery_index_template = template.get_template("gallery-index.html")
     page_template = template.get_template("page.html")
 
     # Added because of: (subgal_section)
-    reverse = gallery_settings.get('reverse', settings["settings"].get('reverse', False))
-    if reverse:
-        galleries_cover = sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"])
-    else:
-        galleries_cover = reversed(sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"]))
+    if galleries_cover:
+        reverse = gallery_settings.get('reverse', settings["settings"].get('reverse', False))
+        if reverse:
+            galleries_cover = sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"])
+        else:
+            galleries_cover = reversed(sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"]))
 
     # this should probably be a factory
     Image.base_dir = Path(".").joinpath(gallery_path)
@@ -498,8 +503,8 @@ def build_gallery(settings, gallery_settings, gallery_path, template, galleries_
     html = template_to_render.render(
         settings=settings,
         gallery=gallery_settings,
-        galleries=galleries_cover, # (subgal_section)
-        sub_index=sub_index, # TODO: (subgal_section)
+        galleries=galleries_cover, # Can be False if there were no subgal sections (subgal_section branch)
+        sub_index=sub_index, # TODO: Back button not generated (subgal_section)
         Image=Image,
         Video=Video,
         Audio=Audio,
@@ -677,3 +682,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# vim: ts=8 et sw=4 sts=4
