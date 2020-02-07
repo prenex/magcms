@@ -1,0 +1,8 @@
+0. Only exposure template is supported as of now because of subgal usage
+1. Subgalleries are nice, but need date otherwise it breaks! Instead of dates there should be support for "ord" numbers.
+2. Need support for "bullet points" for a gallery - shown below the gallery picture where subgalleries are shown.
+3. Better footer with support to to "ÁSZF" (general agreement terms) and "Adatvédelmi nyilatkozat" (privacy terms) + not CC content!
+4. Need a way to add a header box / scroll-stationary box with: Language choices, company email, company phone, face, linkedin, twitter, blog for the company!
+5. Maybe: Way to add a floating logo over the full-image that is above the text so is not darkened
+6. Maybe: Support for Multiple places for the subgal section and telling how many subgals we want to show (from-to - using indexing or ordering by date)
+7. A left-right cycling variant of the full-picture section AND / OR cycling widget for descibing company member bio (image and text)
