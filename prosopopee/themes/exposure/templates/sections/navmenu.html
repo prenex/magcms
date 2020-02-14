@@ -20,6 +20,9 @@
        <li><a href="#"><i class="fas fa-envelope-square"></i><Br/>{{ section.contact_text }}</a>
          <ul>
          {% if section.facebook %}
+         <li><a href="mailto:{{ section.email }}"><i class="fas fa-envelope-square"></i>Email</a></li>
+         {% endif %}
+         {% if section.facebook %}
          <li><a href="{{section.facebook}}"><i class="fab fa-facebook"></i>Facebook</a></li>
          {% endif %}
          {% if section.linkedin %}
@@ -33,6 +36,12 @@
          {% endif %}
          </ul>
        </li>
+       {% if section.email or section.phone %}
+       <li>
+         <p>{{ section.email }}</p>
+         <p>{{ section.phone }}</p>
+       </li>
+       {% endif %}
      </ul>
     </nav>
   </section>
