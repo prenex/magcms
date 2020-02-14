@@ -1,0 +1,41 @@
+{% if section.background or section.color %}
+<div class="bg-section" style="{% if section.background -%}background: {{ section.background }};{% endif %}{% if section.color -%}color: {{ section.color }};{% endif %}">
+{% endif %}
+  <section class="navmenu">
+    <nav id="nav">
+     <ul>
+       <li><a href="#"><i class="fas fa-home fa-2x"></i><Br/>{{ section.home_text }}</a></li>
+       {% if has_goto %}
+       <li><a href="#"><i class="fas fa-list"></i><Br/>{{ section.goto_text }}</a>
+         <ul>
+             {% for goto in gotolist %}
+             <li><a href="#{{ goto.menuid }}"><i class="fas fas fa-arrow-right"></i>{{ goto.text }}</a></li>
+             {% endfor %}
+         </ul>
+       </li>
+       {% endif %}
+       {% if section.blog %}
+       <li><a href="{{ section.blog }}"><i class="fas fa-newspaper"></i><Br/>Blog</a></li>
+       {% endif %}
+       <li><a href="#"><i class="fas fa-envelope-square"></i><Br/>{{ section.contact_text }}</a>
+         <ul>
+         {% if section.facebook %}
+         <li><a href="{{section.facebook}}"><i class="fab fa-facebook"></i>Facebook</a></li>
+         {% endif %}
+         {% if section.linkedin %}
+         <li><a href="{{section.linkedin}}"><i class="fab fa-linkedin"></i>Linkedin</a></li>
+         {% endif %}
+         {% if section.twitter %}
+         <li><a href="{{section.twitter}}"><i class="fab fa-twitter"></i>Twitter</a></li>
+         {% endif %}
+         {% if section.github %}
+         <li><a href="{{section.github}}"><i class="fab fa-github"></i>Github</a></li>
+         {% endif %}
+         </ul>
+       </li>
+     </ul>
+    </nav>
+  </section>
+{% if section.background or section.color %}
+</div>
+{% endif %}

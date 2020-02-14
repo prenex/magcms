@@ -493,18 +493,29 @@ def build_gallery(settings, gallery_settings, gallery_path, template, galleries_
 
     Audio.base_dir = Path(".").joinpath(gallery_path)
     Audio.target_dir = Path(".").joinpath("build", gallery_path)
+
+
+    has_gotto = False;
+    gottolist = []
     if gallery_settings.get("sections"):
         for x in gallery_settings['sections']:
             if x['type'] not in gallery_settings:
                 gallery_settings[x['type'] + '_enabled'] = True
+            if x['type'] == 'header':
+                if x['menuid']:
+                    has_gotto = True
+                    gottolist.append(x)
 
     template_to_render = page_template if gallery_settings.get("static") else gallery_index_template
+
 
     html = template_to_render.render(
         settings=settings,
         gallery=gallery_settings,
         galleries=galleries_cover, # Can be False if there were no subgal sections (subgal_section branch)
         sub_index=sub_index, # TODO: Back button not generated (subgal_section)
+        has_goto=has_gotto, # Needed for the navmenu
+        gotolist=gottolist, # Needed for the navmenu
         Image=Image,
         Video=Video,
         Audio=Audio,
@@ -521,7 +532,7 @@ def build_gallery(settings, gallery_settings, gallery_path, template, galleries_
         open(Path("build").joinpath(gallery_path, "index.html"), "wb").write(html)
 
     # XXX shouldn't this be a call to build_gallery?
-    # Build light mode gallery
+    # Build light mode gallery - TODO: I think does not work in most cases anymore...
     if gallery_settings.get("light_mode", False) or (
             settings["settings"].get("light_mode", False) and
             gallery_settings.get("light_mode") is None

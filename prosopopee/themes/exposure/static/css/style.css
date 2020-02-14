@@ -182,43 +182,43 @@ footer a {
     color: #111;
 }
 
-nav {
+nav.old {
   background-color: #FBFBFB;
   width: 100%;
   height: 56px;
   line-height: 56px;
 }
 
-body.night nav {
+body.night nav.old {
   background-color: #061F2F;;
 }
 
-nav .nav-wrapper {
+nav.old .nav-wrapper {
   position: relative;
   height: 100%;
   margin: 0px auto;
   max-width: 1280px;
 }
 
-nav ul {
+nav.old ul {
   margin: 0;
 }
 
-nav ul li {
+nav.old ul li {
   padding: 0;
   list-style-type: none;
   display:inline-block;
 }
 
-nav a.first-item-menu {
+nav.old a.first-item-menu {
   margin-left: -42px;
 }
 
-nav ul li.active {
+nav.old ul li.active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-nav ul a {
+nav.old ul a {
   transition: background-color .3s;
   font-size: 1rem;
   display: block;
@@ -236,7 +236,7 @@ nav ul a {
   text-align: center;
 }
 
-nav ul li > a.item-menu::before {
+nav.old ul li > a.item-menu::before {
     content: "/";
     margin-right: 22px;
     font-size: 18px;
@@ -437,3 +437,102 @@ input:checked + .slider:before {
   }
 }
 
+/* These are added for the top nav menu for gallery pages (navmenu section) */
+/* As you can see these use html id so should not clash with the default menu navigation CSS */
+/* BEGIN: navmenu */
+/* z-index: 2147483647; is the maximum, but I lowered it a bit */ 
+.navmenu {
+ margin-bottom: 0;
+ margin-top: 0;
+ position: fixed;
+ top: 0px;
+ left: 0px;
+ z-index: 900;
+}
+
+#nav { /*nav rész szélességes, színe*/
+ width:100vw;
+ display:block;
+ background-color:#11bf22;
+ border-bottom:8px solid #006f18;
+}
+
+#nav ul { /*lista stílus igazítás*/
+ padding:0;
+ margin:0;
+ list-style: none;
+ position: relative;
+ }
+
+#nav ul:After {
+ content: "";
+ display:block;
+ clear:both;
+ } 
+
+#nav ul li {
+ display:list-item;
+ list-style: none;
+ float:left;
+ background-color:#11bf22;
+ }
+
+#nav ul li i { /*betűméret - szélesség (ikonsor)*/
+ font-size:30px;
+ width:40px;
+ } 
+
+#nav ul li a { /*betűméret - menü szöveg*/
+ display:block;
+ padding:15px 30px;
+ color:#FFF;
+ font-size:18px;
+ text-decoration:none;
+ font-family: Georgia, serif;
+ text-align:center;
+}
+
+#nav li a:hover { background-color: #5bbcb9; } /*hover szín*/
+
+/* Dropdown */
+/* almenük elrejtése */
+#nav ul ul {
+ display: none;
+ position: absolute; top: 80px;
+}
+
+/* hover-re megjelenítés */
+#nav ul li:hover > ul {
+ display:list-item;
+}
+
+/* almenük lista nézetben */
+#nav ul ul li {
+ width:210px;
+ float:none;
+ position: relative;
+ border-bottom:none;
+}
+
+#nav ul ul li i { /*almenü ikon igazítása*/
+ margin-right:12px;
+ }
+
+#nav ul ul li a {
+ padding:16px 20px;
+ text-align:left;
+ }
+
+/* 3. almenü követően */
+nav ul ul ul li {
+ position: absolute relative;
+ top:-80px;
+ left:200px;
+}
+
+#nav li > a:after { content: ' >'; }
+
+#nav > li > a:after {content: ' >'; }
+
+#nav li > a:only-child:after {content: ''; }
+/* END: navmenu */
