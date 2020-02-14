@@ -9,6 +9,12 @@ a {
     text-decoration: none;
 }
 
+.header {
+    color: #8a8989;
+    text-align: center;
+    font-size: 5.5vw;
+}
+
 .galleries-grid {
     width: 100%;
     height: 100%;
