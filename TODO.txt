@@ -1,8 +1,9 @@
-0. Only exposure template is supported as of now because of subgal usage
-1. Subgalleries are nice, but need date otherwise it breaks! Instead of dates there should be support for "ord" numbers.
+0. Only exposure template is supported as of now because of subgal usage (and maybe other new stuff). Should implement at least "light" too!
 2. Need support for "bullet points" for a gallery - shown below the gallery picture where subgalleries are shown.
 3. Better footer with support to to "ÁSZF" (general agreement terms) and "Adatvédelmi nyilatkozat" (privacy terms) + not CC content!
-4. Need a way to add a header box / scroll-stationary box with: Language choices, company email, company phone, face, linkedin, twitter, blog for the company!
+4. WIP: Need a way to add a header box / scroll-stationary box with: Language choices, company email, company phone, face, linkedin, twitter, blog for the company!
 5. Maybe: Way to add a floating logo over the full-image that is above the text so is not darkened
-6. Maybe: Support for Multiple places for the subgal section and telling how many subgals we want to show (from-to - using indexing or ordering by date)
-7. A left-right cycling variant of the full-picture section AND / OR cycling widget for descibing company member bio (image and text)
+6. Maybe: Support for Multiple places for the subgal section and telling how many subgals we want to show (from-to - using indexing or ordering by date) - BETTER ALTERNATIVE: add "subgal_filter_no" in gallery settings and give possiblility to show only elements to that filter!
+7. "Polaroid" image galleries alongside the usual ones. Also need to be able to fullscreen the images on click as usual. This should not be a CSS-only change or a custom CSS because we should have these galleries alongside the "usual" ones.
+8. CUSTOM CLASS for the section? This actually might save us from differentiating 7.) and the usual image gallery maybe? (7 alone good too)
+9. Make navmenu configurable in the main settings.yaml file. This is useful in case the navmenu appears at multiple pages and we do not want to duplicate information like blog, rss, email...
