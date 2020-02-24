@@ -575,7 +575,7 @@ nav .nav-header {
     display: inline-block;
 }
 
-.gallery-square a {
+.gallery-square > a {
     position: absolute;
     top: 0px;
     left: 0px;

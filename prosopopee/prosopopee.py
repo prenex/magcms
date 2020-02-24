@@ -465,7 +465,6 @@ def create_cover(gallery_name, gallery_settings, gallery_path):
         "link": gallery_name,
         "sub_title": gallery_settings.get("sub_title", ""),
         "date": gallery_settings.get("date", ""),
-        "tags_as_list": gallery_settings.get("tags_as_list", ""),
         "ord": gallery_settings.get("ord", ""),
         "tags": gallery_settings.get("tags", ""),
         "cover_type": cover_image_type,
