@@ -465,6 +465,7 @@ def create_cover(gallery_name, gallery_settings, gallery_path):
         "link": gallery_name,
         "sub_title": gallery_settings.get("sub_title", ""),
         "date": gallery_settings.get("date", ""),
+        "ord": gallery_settings.get("ord", ""),
         "tags": gallery_settings.get("tags", ""),
         "cover_type": cover_image_type,
         "cover": cover_image_url,
@@ -479,10 +480,18 @@ def build_gallery(settings, gallery_settings, gallery_path, template, galleries_
     # Added because of: (subgal_section)
     if galleries_cover:
         reverse = gallery_settings.get('reverse', settings["settings"].get('reverse', False))
+        # Rem.: Galleries are sorted by their "ord" setting if that exists in their settings.yaml, 
+        # then the date if exists, then the first letter of the "link" alphabetically as that is 
+        # actually the directory name and should always exist. Earlier it crashed without date, but 
+        # to our use cases (company website, more generic cms, etc) a date is not always necessary.
+        # Also it seemed like a bug anyways, because there is usually:
+        #       {% if settings.show_date and gallery.date %}
+        # in the html templates so the templates seem to be prepared to now having date just here 
+        # it crashed the original lambda if there was none!
         if reverse:
-            galleries_cover = sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"])
+            galleries_cover = sorted([x for x in galleries_cover if x != {}], key=lambda x: x["ord"] if x["ord"] else (x["date"] if x["date"] else x["link"][0]))
         else:
-            galleries_cover = reversed(sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"]))
+            galleries_cover = reversed(sorted([x for x in galleries_cover if x != {}], key=lambda x: x["ord"] if x["ord"] else (x["date"] if x["date"] else x["link"][0])))
 
     # this should probably be a factory
     Image.base_dir = Path(".").joinpath(gallery_path)
@@ -578,9 +587,9 @@ def build_index(settings, galleries_cover, templates, gallery_path='', sub_index
 
     reverse = gallery_settings.get('reverse', settings["settings"].get('reverse', False))
     if reverse:
-        galleries_cover = sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"])
+        galleries_cover = sorted([x for x in galleries_cover if x != {}], key=lambda x: x["ord"] if x["ord"] else (x["date"] if x["date"] else x["link"][0]))
     else:
-        galleries_cover = reversed(sorted([x for x in galleries_cover if x != {}], key=lambda x: x["date"]))
+        galleries_cover = reversed(sorted([x for x in galleries_cover if x != {}], key=lambda x: x["ord"] if x["ord"] else (x["date"] if x["date"] else x["link"][0])))
 
     # this should probably be a factory
     Image.base_dir = Path(".").joinpath(gallery_path)
@@ -677,7 +686,7 @@ def main():
 
         xml = feed_template.render(
             settings=settings,
-            galleries=reversed(sorted([x for x in front_page_galleries_cover if x != {}], key=lambda x: x["date"]))
+            galleries=reversed(sorted([x for x in front_page_galleries_cover if x != {}], key=lambda x: x["ord"] if x["ord"] else (x["date"] if x["date"] else x["link"][0])))
             ).encode("Utf-8")
 
         open(Path("build").joinpath("feed.xml"), "wb").write(xml)
