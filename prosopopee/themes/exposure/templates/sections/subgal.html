@@ -7,12 +7,17 @@
   <div class="galleries-line covers-{{ galleries_line|length }}">
     {% for gallery in galleries_line|reverse %}<!-- comment tricks against space between inline-block
     --><div class="gallery-square">
+      <div class="subgaldiv">
       <a href="{{ gallery.link }}">
         <div class="gallery-title">
           <h2>{{ gallery.title }}</h2>
           {% if gallery.sub_title %}<h3>{{ gallery.sub_title }}</h3>{% endif %}
           {% if settings.show_date and gallery.date %}<div class="gallery-datetime">{{ gallery.date.strftime("%d %B %Y") }}</div>{% endif %}
-          {% if gallery.tags %}<div class="gallery-tag">IN {% for tag in gallery.tags -%} <span> {{ tag }}</span> {% endfor -%}</div>{% endif %}
+          {% if gallery.tags %}
+          {% if not gallery.tags_as_list %}
+          <div class="gallery-tag">
+            IN {% for tag in gallery.tags -%} <span> {{ tag }}</span> {% endfor -%}
+          </div>{% endif %}{% endif %}
         </div>
       </a>
       {% if gallery.cover_type == "video" %}
@@ -33,6 +38,12 @@
       <div class="gallery-cover" style="background-image: url('{{ cover.generate_thumbnail("x1366") }}'), url('{{ cover.generate_thumbnail("x900") }}');"></div>
       {% endif %}
       {% endif %}
+      </div>
+      {% if gallery.tags %}
+      {% if gallery.tags_as_list %}
+      <div class="gallery-tags_as_list">
+        <ul> {% for tag in gallery.tags %} <li> {{ tag }}</li> {% endfor %} </ul>
+      </div>{% endif %}{% endif %}
     </div><!-- comment tricks against space between inline-block
     -->{% endfor %}
   </div>
