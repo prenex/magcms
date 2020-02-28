@@ -1,7 +1,8 @@
 0. Only exposure template is supported as of now because of subgal usage (and maybe other new stuff). Should implement at least "light" too!
-2. Need support for "bullet points" for a gallery - shown below the gallery picture where subgalleries are shown.
+2. WIP: Need support for "bullet points" for a gallery - shown below the gallery picture where subgalleries are shown.
 3. Better footer with support to to "ÁSZF" (general agreement terms) and "Adatvédelmi nyilatkozat" (privacy terms) + not CC content!
-4. WIP: Need a way to add a header box / scroll-stationary box with: Language choices, company email, company phone, face, linkedin, twitter, blog for the company!
+4. WIP: Need a way to add a header box / scroll-stationary box with: Language choices, company email, company phone, face, linkedin, twitter, blog for the company! (navmenu)
+4b. Make navmenu mobile friendly and responsive
 5. Maybe: Way to add a floating logo over the full-image that is above the text so is not darkened
 6. Maybe: Support for Multiple places for the subgal section and telling how many subgals we want to show (from-to - using indexing or ordering by date) - BETTER ALTERNATIVE: add "subgal_filter_no" in gallery settings and give possiblility to show only elements to that filter!
 7. "Polaroid" image galleries alongside the usual ones. Also need to be able to fullscreen the images on click as usual. This should not be a CSS-only change or a custom CSS because we should have these galleries alongside the "usual" ones.

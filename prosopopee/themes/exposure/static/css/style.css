@@ -475,6 +475,7 @@ input:checked + .slider:before {
 #nav p { /* For email and phone for example */
  color:#FFF;
  text-align:center;
+ font-size:2.5vw;
 }
 
 #nav ul { /*lista stílus igazítás*/
@@ -498,15 +499,15 @@ input:checked + .slider:before {
 }
 
 #nav ul li i { /*betűméret - szélesség (ikonsor)*/
- font-size:30px;
- width:40px;
+ font-size:2.8vw;
+ width:3.4vw;
 } 
 
 #nav ul li a { /*betűméret - menü szöveg*/
  display:block;
- padding:15px 30px;
+ padding:1.6vw 3.0vw;
  color:#FFF;
- font-size:18px;
+ font-size:2.8vw;
  text-decoration:none;
  font-family: Georgia, serif;
  text-align:center;
@@ -518,7 +519,7 @@ input:checked + .slider:before {
 /* almenük elrejtése */
 #nav ul ul {
  display: none;
- position: absolute; top: 80px;
+ position: absolute; top: 60%;
 }
 
 /* hover-re megjelenítés */
@@ -528,7 +529,7 @@ input:checked + .slider:before {
 
 /* almenük lista nézetben */
 #nav ul ul li {
- width:210px;
+ width:40vw;
  float:none;
  position: relative;
  border-bottom:none;
