@@ -474,8 +474,10 @@ input:checked + .slider:before {
 
 #nav p { /* For email and phone for example */
  color:#FFF;
- text-align:center;
+ text-align:left;
  font-size:2.5vw;
+ padding:0;
+ margin:0;
 }
 
 #nav ul { /*lista stílus igazítás*/
