@@ -36,8 +36,9 @@
          {% endif %}
          </ul>
        </li>
-       {% if section.phone %}
+       {% if section.email or section.phone %}
        <li>
+         <p>{{ section.email }}</p>
          <p>{{ section.phone }}</p>
        </li>
        {% endif %}
