@@ -17,7 +17,6 @@ a {
 
 .galleries-grid {
     width: 100%;
-    height: 100%;
     position: relative;
     text-align: center;
     margin: 0 auto;
@@ -26,7 +25,6 @@ a {
 
 .galleries-line {
     width: 100%;
-    height: 100%;
     margin-bottom: -5px; /* YOLO */
 }
 
@@ -425,12 +423,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/* Needed height: 100% because if there is an element with non determined */
-/* height on the chain from root to node it fails! gallery-tags_as_list failed for this! */
-.subgal {
-    height: 100%;
-}
-
 .subgaldiv {
     height: 50vh;
     position: relative;
@@ -444,7 +436,7 @@ input:checked + .slider:before {
   .gallery-square {
     width: 100% !important;
     margin-bottom: -7px !important;
-    padding-bottom: 70% !important;
+    /*padding-bottom: 70% !important;*/
   }
 
   .gallery-title > h2 {
