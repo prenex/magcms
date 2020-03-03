@@ -8,3 +8,5 @@
 7. "Polaroid" image galleries alongside the usual ones. Also need to be able to fullscreen the images on click as usual. This should not be a CSS-only change or a custom CSS because we should have these galleries alongside the "usual" ones.
 8. CUSTOM CLASS for the section? This actually might save us from differentiating 7.) and the usual image gallery maybe? (7 alone good too)
 9. Make navmenu configurable in the main settings.yaml file. This is useful in case the navmenu appears at multiple pages and we do not want to duplicate information like blog, rss, email...
+10. Multiple image size generation (not only hi+midres): need really small images for small screens and old machines.
+11. Specify which image to download from the server according to media query. Current way it downloads both I think which is worst. Also on small screens there is no need at all to download 3k images and such because there is no point for it at all!
