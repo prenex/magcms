@@ -2,27 +2,35 @@
 <div class="bg-section" style="background: {{ section.background }};">
 {% endif %}
     <section class="polaroid-group baguette" {% if section.css %}style="{{ section.css }}"{% endif %} >
-    <div class="polaroid-line" style="width: 100%; height: 33vh;">
-    {% for image in line %}
+    <div class="polaroid-line">
+    {% for image in section.images %}
         {% set caption = image.text %}
+        {% set custpos = false %}
         {% if image.angle %}
            {% set angle = image.angle %}
         {% else %}
-            {% set angle = 20 %}
+            {% if (loop.index%2 == 1) %}
+                {% set angle = 15 %}
+            {% else %}
+                {% set angle = -15 %}
+            {% endif %}
         {% endif %}
         {% if image.x %}
             {% set x = image.x %}
+            {% set custpos = true %}
         {% else %}
             {% set x = "0px" %}
+        {% endif %}
         {% if image.y %}
             {% set y = image.y %}
+            {% set custpos = true %}
         {% else %}
             {% set y = "0px" %}
         {% endif %}
         {% if image.z %}
             {% set z = image.z %}
         {% else %}
-            {% set z = 2 %}
+            {% set z = loop.index %}
         {% endif %}
         {% set image = Image(image) %}
         {{ image.copy() }}
@@ -33,7 +41,7 @@
             data-at-1366="{{ image.generate_thumbnail("x1366") }}"
             data-at-1920="{{ image.generate_thumbnail("x1920") }}"
             class="polaroid"
-            style="left: {{ x }}; top: {{ y }}; z-index: {{ z }}; -webkit-transform: rotate({{ angle }}deg); -moz-transform: rotate({{ angle }}deg); transform: rotate({{ angle }}deg);">
+            style="{% if custpos %}position:absolute;{% endif %}left: {{ x }}; top: {{ y }}; z-index: {{ z }}; -webkit-transform: rotate({{ angle }}deg); -moz-transform: rotate({{ angle }}deg); transform: rotate({{ angle }}deg);">
                 {% if caption %}
                 <img class="lazy" src="" data-original="{{ image.generate_thumbnail("x450") }}" alt="{{ caption }}">
                 <h5 class="polaroid__title">{{ caption }}</h5>
@@ -41,8 +49,9 @@
                 <img class="lazy" src="" data-original="{{ image.generate_thumbnail("x450") }}" alt="unnamed image">
                 {% endif %}
         </a>
-    </div>
     {% endfor %}
+    </div>
+    </section>
 {% if section.background %}
 </div>
 {% endif %}
