@@ -2,7 +2,7 @@
 <div class="bg-section" style="background: {{ section.background }};">
 {% endif %}
     <section class="polaroid-group baguette" {% if section.css %}style="{{ section.css }}"{% endif %} >
-    <div class="polaroid-line">
+        <div class="polaroid-line" {% if section.margin_bottom %}style="margin-bottom: {{ section.margin_bottom }};"{% endif %}>
     {% for image in section.images %}
         {% set caption = image.text %}
         {% set custpos = false %}
@@ -15,23 +15,32 @@
                 {% set angle = -15 %}
             {% endif %}
         {% endif %}
+
         {% if image.x %}
             {% set x = image.x %}
             {% set custpos = true %}
         {% else %}
             {% set x = "0px" %}
         {% endif %}
+
         {% if image.y %}
             {% set y = image.y %}
             {% set custpos = true %}
         {% else %}
             {% set y = "0px" %}
         {% endif %}
+
         {% if image.z %}
             {% set z = image.z %}
         {% else %}
             {% set z = loop.index %}
         {% endif %}
+
+        {% if image.w %}
+            {% set w = image.w %}
+        {% else %}
+        {% endif %}
+
         {% set image = Image(image) %}
         {{ image.copy() }}
         {% set ratio = image.ratio %}
