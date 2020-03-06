@@ -576,6 +576,7 @@ a.polaroid {
     -webkit-transition: width 1s, height 1s, -webkit-transform 1s;
     -o-transition: width 1s, height 1s,-o-transform 1s;
     text-align: center;
+    overflow: hidden; /*Bullet-proofing*/
 }
 
 /* Remove rotation and make it visible (z-index) */
