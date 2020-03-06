@@ -6,7 +6,7 @@
      <ul>
        <li><a href="#"><i class="fas fa-home fa-2x"></i><Br/>{{ section.home_text }}</a></li>
        {% if has_goto %}
-       <li><a href="#"><i class="fas fa-list"></i><Br/>{{ section.goto_text }}</a>
+       <li><a href="#"><i class="fas fa-list fa-2x"></i><Br/>{{ section.goto_text }}</a>
          <ul>
              {% for goto in gotolist %}
              <li><a href="#{{ goto.menuid }}"><i class="fas fas fa-arrow-right"></i>{{ goto.text }}</a></li>
@@ -15,24 +15,24 @@
        </li>
        {% endif %}
        {% if section.blog %}
-       <li><a href="{{ section.blog }}"><i class="fas fa-newspaper"></i><Br/>Blog</a></li>
+       <li><a href="{{ section.blog }}"><i class="fas fa-newspaper fa-2x"></i><Br/>Blog</a></li>
        {% endif %}
-       <li><a href="#"><i class="fas fa-envelope-square"></i><Br/>{{ section.contact_text }}</a>
+       <li><a href="#"><i class="fas fa-envelope-square fa-2x"></i><Br/>{{ section.contact_text }}</a>
          <ul>
          {% if section.email %}
-         <li><a href="mailto:{{ section.email }}"><i class="fas fa-envelope-square"></i>Email</a></li>
+         <li><a href="mailto:{{ section.email }}"><i class="fas fa-envelope-square fa-2x"></i>Email</a></li>
          {% endif %}
          {% if section.facebook %}
-         <li><a href="{{section.facebook}}"><i class="fab fa-facebook"></i>Facebook</a></li>
+         <li><a href="{{section.facebook}}"><i class="fab fa-facebook fa-2x"></i>Facebook</a></li>
          {% endif %}
          {% if section.linkedin %}
-         <li><a href="{{section.linkedin}}"><i class="fab fa-linkedin"></i>Linkedin</a></li>
+         <li><a href="{{section.linkedin}}"><i class="fab fa-linkedin fa-2x"></i>Linkedin</a></li>
          {% endif %}
          {% if section.twitter %}
-         <li><a href="{{section.twitter}}"><i class="fab fa-twitter"></i>Twitter</a></li>
+         <li><a href="{{section.twitter}}"><i class="fab fa-twitter fa-2x"></i>Twitter</a></li>
          {% endif %}
          {% if section.github %}
-         <li><a href="{{section.github}}"><i class="fab fa-github"></i>Github</a></li>
+         <li><a href="{{section.github}}"><i class="fab fa-github fa-2x"></i>Github</a></li>
          {% endif %}
          </ul>
        </li>

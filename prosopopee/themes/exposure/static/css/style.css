@@ -467,7 +467,7 @@ input:checked + .slider:before {
 #nav p { /* For email and phone for example */
  color:#FFF;
  text-align:left;
- font-size:2.5vw;
+ font-size:2.5vmin;
  padding:0;
  margin:0;
 }
@@ -493,15 +493,15 @@ input:checked + .slider:before {
 }
 
 #nav ul li i { /*betűméret - szélesség (ikonsor)*/
- font-size:2.8vw;
- width:3.4vw;
+ font-size:2.8vmin;
+ width:3.0vw;
 } 
 
 #nav ul li a { /*betűméret - menü szöveg*/
  display:block;
- padding:1.6vw 3.0vw;
+ padding:1.5vh 3.0vw;
  color:#FFF;
- font-size:2.8vw;
+ font-size:2.8vmin;
  text-decoration:none;
  font-family: Georgia, serif;
  text-align:center;
@@ -513,7 +513,7 @@ input:checked + .slider:before {
 /* almenük elrejtése */
 #nav ul ul {
  display: none;
- position: absolute; top: 60%;
+ position: absolute; top: 100%;
 }
 
 /* hover-re megjelenítés */
@@ -556,7 +556,7 @@ nav ul ul ul li {
 .polaroid-line {
     width: 70vw;
     margin: auto;
-    position: relative; /* Needed when cust_pos becomes active and children are absolute positioned for this one */
+    position: relative; /*Needed when cust_pos becomes active and children are absolute positioned for this one*/
 }
 
 a.polaroid {
