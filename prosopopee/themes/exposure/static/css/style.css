@@ -556,6 +556,7 @@ nav ul ul ul li {
 .polaroid-line {
     width: 70vw;
     margin: auto;
+    position: relative; /* Needed when cust_pos becomes active and children are absolute positioned for this one */
 }
 
 a.polaroid {
@@ -577,6 +578,7 @@ a.polaroid {
     -o-transition: width 1s, height 1s,-o-transform 1s;
     text-align: center;
     overflow: hidden; /*Bullet-proofing*/
+    margin: auto;
 }
 
 /* Remove rotation and make it visible (z-index) */
@@ -600,7 +602,7 @@ a.polaroid img {
         display: block;
         min-width: 10vw;
         max-width: 100%;
-        max-height: 100%;
+        max-height: 85%; /* Never hide the text this way! */
         margin: auto; /* Centers wth display: block */
 }
 
