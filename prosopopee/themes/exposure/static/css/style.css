@@ -445,23 +445,24 @@ input:checked + .slider:before {
   /* BEGIN polaroid-group */
   a.polaroid {
     /*Size by calculating image size*/
-    width: auto !important;
+    width: 60vw !important;
     height: auto !important;
+    max-height: 50vw !important;/*expermtal*/
+    left: 0px !important;
+    top: 0px !important;
+    position:static !important;
   }
 
-  /* Size image for mobile so screen is not getting */
-  a.polaroid img {
-    -webkit-transform: scale(0.7); /* Saf3.1+, Chrome */
-    -moz-transform: scale(0.7); /* FF3.5+ */
-    -ms-transform: scale(0.7); /* IE9 */
-    -o-transform: scale(0.7); /* Opera 10.5+ */
-    transform: scale(0.7);
-    /* IE6–IE9 */
-    filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.9999619230641713, M12=-0.008726535498373935, M21=0.008726535498373935, M22=0.9999619230641713,SizingMethod='auto expand');
+  .leftpola {
+    -webkit-transform: rotate(-15deg) !important;
+    -moz-transform: rotate(-15deg) !important;
+    transform: rotate(-15deg) !important;
   }
 
-  a.polaroid h5 {
-    display: none !important; /*No image text on mobile - too small space*/
+  .rightpola {
+    -webkit-transform: rotate(15deg) !important;
+    -moz-transform: rotate(15deg) !important;
+    transform: rotate(15deg) !important;
   }
   /* END polaroid-group */
 }
