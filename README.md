@@ -1,53 +1,57 @@
 <p align="center">
-<img src="logo.png">
+<img src="logo_shaded_alpha.png">
 </p>
 
-# Prosopopee
+# MagCMS
 
-Prosopopee. Static site generator for your story.
+MagCMS is static website and content generator for modern company websites.
 
-Make beautiful customizable pictures galleries that tell a story using a static website generator written in Python. You don't need to care about css, code and presentation, manage your contents in YAML file and Prosopopee will take care about the rest.
+Based on: Prosopopee. Static site generator for your story.
 
-Prosopopee is sections oriented, make it very flexible, many kinds of section already available:
+Make beautiful customizable company sites, landing pages or pictures galleries that tell a story using a static website generator written in Python. You don't need to care about css, code and presentation, manage your contents in YAML file and MagCMS will take care about the rest.
+
+MagCMS is sections oriented, make it very flexible, many kinds of section already available:
 
 * Parallax
 * Group of pics (gallery)
 * Paragraph
 * Iframe (Youtube, Maps, etc..)
 * Quote
-* [And more](http://prosopopee.readthedocs.io/en/latest/sections.html)
+* "subgal-section" which leads to subpages shown as a gallery
+* And many more. 
 
-## Screenshots
+# Documentation
 
-<img src="https://github.com/Psycojoker/prosopopee/raw/master/pics/2018-04-30-113447_872x817_scrot.png" width="15%"></img> <img src="https://github.com/Psycojoker/prosopopee/raw/master/pics/2018-04-30-114059_1128x908_scrot.png" width="15%"></img> <img src="https://github.com/Psycojoker/prosopopee/raw/master/pics/2018-04-30-113707_1195x788_scrot.png" width="15%"></img> <img src="https://github.com/Psycojoker/prosopopee/raw/master/pics/2018-04-30-113821_1128x847_scrot.png" width="15%"></img> 
+Currentl no fancy documentation, but you can access the source code for the website of my company MagosIT Kft.
+
+See: [magosit-website] (https://github.com/magosit-website)
+
+You can also try browsing the original [prosopopee docs](http://prosopopee.readthedocs.io/en/latest/sections.html)
+
+[More docs] (http://prosopopee.readthedocs.org/en/latest/)
 
 ## Features
 
-Prosopopee currently supports:
+MagosCMS currently supports:
 
- * Lightweight
+ * Lightweight and fast
+ * Hackable for your own needs
  * Thumbnails & multiple resolutions for fast previews (JPEG progressive)
  * Videos support
  * Mobile friendly
  * Caching for fast rendering
  * Multi level gallery
- * Support themes (default, material, light)
+ * Support for themes (**only the default theme works for now**)
  * Password access (encrypt page)
  * Image lazy loading
  * Night Mode
  * Completely static output is easy to host anywhere
- * Hackable
  
-  ## Examples
+## Examples
  
-You can find example usages here:
+Example website:
 
-* http://surleschemins.fr
-* http://media.faimaison.net/photos/galerie/
-* https://www.thebrownianmovement.org/
-* http://outside.browny.pink
-* http://such.life
-* http://www.street-art.me
+ * [www.magosit.hu - under construction] (www.magosit.hu)
  
  ## Code example
 
@@ -76,6 +80,11 @@ sections:
 ```
  
 ## Usage
+
+Currently its executable is still named prosopopee.
+
+TODO: rename this!
+
 ```bash
 prosopopee
 prosopopee preview
@@ -85,19 +94,10 @@ prosopopee (-h | --help)
 prosopopee.py --version
 ```
 
-## Docker
-
-https://hub.docker.com/r/beudbeud/prosopopee/
-
 ## Licence 
 
-GLPv3
+GLPv3 - just like the orginal prosopopee!
 
-## Documentation
+## Why a fork?
 
-  http://prosopopee.readthedocs.org/en/latest/
-
-## IRC 
-
-channel : irc.freenode.net#prosopopee
-
+I have actually asked the original creator of prosopopee if he would like my changes or if I should fork this off. His original project is much more aimed at photo gallery sites while mine is aimed at creating44
